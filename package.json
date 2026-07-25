@@ -1,0 +1,20 @@
+{
+  "name": "@wornpage/receipt",
+  "version": "0.1.0",
+  "description": "Svelte 5 action receipt component — undo-capable result cards with fly transition",
+  "type": "module",
+  "scripts": { "test": "bun test" },
+  "main": "./src/index.ts",
+  "svelte": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "svelte": "./src/index.ts",
+      "default": "./src/WornReceipt.svelte"
+    }
+  },
+  "peerDependencies": { "svelte": "^5.0.0" },
+  "files": ["src/", "dist/"],
+  "keywords": ["svelte", "receipt", "undo", "wornpage"],
+  "license": "MIT"
+}
