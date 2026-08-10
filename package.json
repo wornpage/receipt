@@ -4,7 +4,7 @@
   "description": "Svelte 5 action receipt component — undo-capable result cards with fly transition",
   "type": "module",
   "wornpage": {
-    "contractVersion": 1,
+    "contractVersion": 2,
     "delivery": "source"
   },
   "scripts": {
