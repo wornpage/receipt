@@ -1,0 +1,9 @@
+name: Release contract
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  release-contract:
+    uses: wornpage/cli/.github/workflows/component-release-contract.yml@master
