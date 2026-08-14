@@ -48,12 +48,15 @@ bun add @wornpage/receipt
 | `summary` | `string` | required | The headline result |
 | `cells` | `Array<{ label, value }>` | — | Detail rows under the summary |
 | `undoAvailable` | `boolean` | `false` | Show the Undo button |
+| `announce` | `boolean` | `true` | Set to `false` when an app-owned live region announces the same result |
 | `id` | `string` | — | Optional root element id |
 | `onundo` | `() => void` | — | Undo pressed |
 | `ondone` | `() => void` | — | Dismiss pressed |
 
-The card renders with `role="status"` and `aria-live="polite"`, so screen
-readers announce the result without stealing focus.
+The card renders with `role="status"` and `aria-live="polite"` by default, so
+screen readers announce the result without stealing focus. Set `announce={false}`
+when a composed application already announces the same action through one
+persistent live region.
 
 Actions render only when their handlers exist, use the shared Wornpage Button,
 and wrap on narrow screens. Entry motion is disabled when the user prefers

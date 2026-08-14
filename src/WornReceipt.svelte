@@ -7,15 +7,23 @@
 		summary: string;
 		cells?: Array<{ label: string; value: string }>;
 		undoAvailable?: boolean;
+		announce?: boolean;
 		id?: string;
 		onundo?: () => void;
 		ondone?: () => void;
 	}
 
-	let { summary, cells, undoAvailable = false, id, onundo, ondone }: Props = $props();
+	let { summary, cells, undoAvailable = false, announce = true, id, onundo, ondone }: Props = $props();
 </script>
 
-<div class="worn-receipt" {id} role="status" aria-live="polite" aria-atomic="true" in:fly={{ y: prefersReducedMotion.current ? 0 : -8, duration: prefersReducedMotion.current ? 0 : 220 }}>
+<div
+	class="worn-receipt"
+	{id}
+	role={announce ? 'status' : undefined}
+	aria-live={announce ? 'polite' : undefined}
+	aria-atomic={announce ? 'true' : undefined}
+	in:fly={{ y: prefersReducedMotion.current ? 0 : -8, duration: prefersReducedMotion.current ? 0 : 220 }}
+>
 	<div class="worn-receipt-head">
 		<span>Last result</span>
 		<strong>{summary}</strong>

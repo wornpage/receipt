@@ -50,4 +50,12 @@ describe("WornReceipt", () => {
     expect(source).toContain("overflow-wrap: anywhere;");
     expect(source).toContain("flex-wrap: wrap;");
   });
+
+  it("announces standalone receipts by default and supports one app-owned live region", () => {
+    expect(source).toContain("announce?: boolean;");
+    expect(source).toContain("announce = true");
+    expect(source).toContain("role={announce ? 'status' : undefined}");
+    expect(source).toContain("aria-live={announce ? 'polite' : undefined}");
+    expect(source).toContain("aria-atomic={announce ? 'true' : undefined}");
+  });
 });
