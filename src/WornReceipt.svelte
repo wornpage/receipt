@@ -1,18 +1,21 @@
 <script lang="ts">
 	import { fly } from 'svelte/transition';
+	import { prefersReducedMotion } from 'svelte/motion';
+	import { Button } from '@wornpage/button';
 
 	interface Props {
 		summary: string;
 		cells?: Array<{ label: string; value: string }>;
 		undoAvailable?: boolean;
+		id?: string;
 		onundo?: () => void;
 		ondone?: () => void;
 	}
 
-	let { summary, cells, undoAvailable = false, onundo, ondone }: Props = $props();
+	let { summary, cells, undoAvailable = false, id, onundo, ondone }: Props = $props();
 </script>
 
-<div class="worn-receipt" role="status" aria-live="polite" aria-atomic="true" in:fly={{ y: -8, duration: 220 }}>
+<div class="worn-receipt" {id} role="status" aria-live="polite" aria-atomic="true" in:fly={{ y: prefersReducedMotion.current ? 0 : -8, duration: prefersReducedMotion.current ? 0 : 220 }}>
 	<div class="worn-receipt-head">
 		<span>Last result</span>
 		<strong>{summary}</strong>
@@ -24,12 +27,14 @@
 			{/each}
 		</div>
 	{/if}
-	<div class="worn-receipt-actions">
-		{#if undoAvailable}
-			<button type="button" class="worn-btn" onclick={onundo} title="Undo this action and restore the previous state.">Undo</button>
-		{/if}
-		<button type="button" class="worn-btn" onclick={ondone}>Dismiss</button>
-	</div>
+	{#if (undoAvailable && onundo) || ondone}
+		<div class="worn-receipt-actions">
+			{#if undoAvailable && onundo}
+				<Button size="sm" onclick={onundo} title="Undo this action and restore the previous state.">Undo</Button>
+			{/if}
+			{#if ondone}<Button size="sm" onclick={ondone}>Dismiss</Button>{/if}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -59,6 +64,7 @@
 		color: var(--cockpit-text);
 		font-weight: 560;
 		font-size: 14px;
+		overflow-wrap: anywhere;
 	}
 	.worn-receipt-lines {
 		display: grid;
@@ -88,6 +94,7 @@
 	}
 	.worn-receipt-actions {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 8px;
 		padding-top: 4px;
 	}
@@ -95,20 +102,4 @@
 		outline: 2px dashed var(--cockpit-accent);
 		outline-offset: 2px;
 	}
-	.worn-btn {
-		align-items: center;
-		background: transparent;
-		border: 1px solid var(--cockpit-border);
-		border-radius: 999px;
-		color: var(--cockpit-text-secondary);
-		cursor: pointer;
-		display: inline-flex;
-		font-size: 12px;
-		font-weight: 560;
-		gap: 6px;
-		padding: 3px 10px;
-		transition: background-color 0.12s ease;
-	}
-	.worn-btn:hover { background: var(--cockpit-hover-bg); color: var(--cockpit-text); }
-	.worn-btn:focus-visible { outline: 2px dashed var(--cockpit-accent); outline-offset: 2px; }
 </style>

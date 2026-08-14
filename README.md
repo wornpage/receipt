@@ -1,7 +1,7 @@
 # @wornpage/receipt
 
 Svelte 5 action receipt — an undo-capable result card with a fly-in
-transition. Zero dependencies.
+transition and shared Wornpage actions.
 
 A receipt answers "what just happened?" immediately after an action: a summary
 line, optional detail cells, and an Undo affordance while one is available.
@@ -48,11 +48,16 @@ bun add @wornpage/receipt
 | `summary` | `string` | required | The headline result |
 | `cells` | `Array<{ label, value }>` | — | Detail rows under the summary |
 | `undoAvailable` | `boolean` | `false` | Show the Undo button |
+| `id` | `string` | — | Optional root element id |
 | `onundo` | `() => void` | — | Undo pressed |
 | `ondone` | `() => void` | — | Dismiss pressed |
 
 The card renders with `role="status"` and `aria-live="polite"`, so screen
 readers announce the result without stealing focus.
+
+Actions render only when their handlers exist, use the shared Wornpage Button,
+and wrap on narrow screens. Entry motion is disabled when the user prefers
+reduced motion.
 
 ## Pairing with undo
 
