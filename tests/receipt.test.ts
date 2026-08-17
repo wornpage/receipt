@@ -9,6 +9,13 @@ describe("WornReceipt", () => {
     expect(pkg.name).toBe("@wornpage/receipt");
   });
 
+  it("pins the exact shared button commit", () => {
+    const pkg = require("../package.json");
+    expect(pkg.dependencies["@wornpage/button"]).toBe(
+      "https://codeload.github.com/wornpage/button/tar.gz/f7066fe9d932b42291f77765d6a405b02489389e",
+    );
+  });
+
   it("exports WornReceipt from index", async () => {
     const mod = await import("../src/index.ts");
     expect(mod.WornReceipt).toBeDefined();
