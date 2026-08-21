@@ -12,7 +12,7 @@ describe("WornReceipt", () => {
   it("pins the exact shared button commit", () => {
     const pkg = require("../package.json");
     expect(pkg.dependencies["@wornpage/button"]).toBe(
-      "https://codeload.github.com/wornpage/button/tar.gz/f7066fe9d932b42291f77765d6a405b02489389e",
+      "https://codeload.github.com/wornpage/button/tar.gz/1f55c470c20ec3ef900706d313c16609184394b8",
     );
   });
 
