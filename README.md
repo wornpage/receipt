@@ -62,6 +62,11 @@ Actions render only when their handlers exist, use the shared Wornpage Button,
 and wrap on narrow screens. Entry motion is disabled when the user prefers
 reduced motion.
 
+The receipt root has `tabindex="-1"`, so composed flows can move focus to a new
+result without adding it to the sequential tab order. Its focus outline uses
+`--worn-receipt-focus`, then `--cockpit-focus`, `--cockpit-text`, and
+`currentColor` as progressively broader fallbacks.
+
 ## Pairing with undo
 
 `undoAvailable` is a display flag only — this component owns no state. Drive it
