@@ -2,11 +2,13 @@ import { describe, it, expect } from "bun:test";
 import { readFileSync } from "node:fs";
 
 const source = readFileSync(new URL("../src/WornReceipt.svelte", import.meta.url), "utf8");
+const readme = readFileSync(new URL("../README.md", import.meta.url), "utf8");
 
 describe("WornReceipt", () => {
   it("package name is correct", () => {
     const pkg = require("../package.json");
     expect(pkg.name).toBe("@wornpage/receipt");
+    expect(pkg.version).toBe("0.1.6");
   });
 
   it("pins the exact shared button commit", () => {
@@ -65,4 +67,12 @@ describe("WornReceipt", () => {
     expect(source).toContain("aria-live={announce ? 'polite' : undefined}");
     expect(source).toContain("aria-atomic={announce ? 'true' : undefined}");
   });
+
+	it("owns its programmatic focus target and theme-extensible outline", () => {
+		const focusRule = source.match(/\.worn-receipt:focus-visible \{[\s\S]*?\}/u)?.[0] ?? "";
+		expect(source).toMatch(/<div\s+class="worn-receipt"[\s\S]*?tabindex="-1"/u);
+		expect(focusRule).toContain("outline: 2px dashed var(--worn-receipt-focus, var(--cockpit-focus, var(--cockpit-text, currentColor)));");
+		expect(focusRule).not.toContain("--cockpit-accent");
+		expect(readme).toContain("`--worn-receipt-focus`");
+	});
 });

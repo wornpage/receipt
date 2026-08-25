@@ -19,6 +19,7 @@
 <div
 	class="worn-receipt"
 	{id}
+	tabindex="-1"
 	role={announce ? 'status' : undefined}
 	aria-live={announce ? 'polite' : undefined}
 	aria-atomic={announce ? 'true' : undefined}
@@ -107,7 +108,7 @@
 		padding-top: 4px;
 	}
 	.worn-receipt:focus-visible {
-		outline: 2px dashed var(--cockpit-accent);
+		outline: 2px dashed var(--worn-receipt-focus, var(--cockpit-focus, var(--cockpit-text, currentColor)));
 		outline-offset: 2px;
 	}
 </style>

@@ -1,6 +1,6 @@
 {
   "name": "@wornpage/receipt",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Svelte 5 action receipt component — undo-capable result cards with fly transition",
   "type": "module",
   "wornpage": {
