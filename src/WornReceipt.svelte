@@ -49,9 +49,9 @@
 <style>
 	.worn-receipt {
 		margin-top: 12px;
-		border: 1px solid var(--cockpit-border);
-		border-radius: var(--cockpit-radius);
-		background: var(--cockpit-surface);
+		border: 1px solid var(--worn-border);
+		border-radius: var(--worn-radius);
+		background: var(--worn-surface);
 		padding: 12px 14px;
 		display: grid;
 		gap: 8px;
@@ -59,7 +59,7 @@
 	.worn-receipt-head {
 		display: grid;
 		gap: 2px;
-		border-bottom: 1px solid var(--cockpit-border);
+		border-bottom: 1px solid var(--worn-border);
 		padding-bottom: 8px;
 	}
 	.worn-receipt-head span {
@@ -67,10 +67,10 @@
 		font-size: 10px;
 		font-weight: 600;
 		letter-spacing: 0.04em;
-		color: var(--cockpit-text-muted);
+		color: var(--worn-text-muted);
 	}
 	.worn-receipt-head strong {
-		color: var(--cockpit-text);
+		color: var(--worn-text);
 		font-weight: 560;
 		font-size: 14px;
 		overflow-wrap: anywhere;
@@ -85,7 +85,7 @@
 		gap: 4px 10px;
 		align-items: baseline;
 		padding: 6px 0;
-		border-bottom: 1px solid var(--cockpit-border);
+		border-bottom: 1px solid var(--worn-border);
 	}
 	.worn-receipt-lines > div:last-child { border-bottom: 0; }
 	.worn-receipt-lines span {
@@ -93,10 +93,10 @@
 		font-size: 10px;
 		font-weight: 600;
 		letter-spacing: 0.04em;
-		color: var(--cockpit-text-muted);
+		color: var(--worn-text-muted);
 	}
 	.worn-receipt-lines strong {
-		color: var(--cockpit-text);
+		color: var(--worn-text);
 		font-weight: 520;
 		font-size: 13px;
 		overflow-wrap: anywhere;
@@ -108,7 +108,7 @@
 		padding-top: 4px;
 	}
 	.worn-receipt:focus-visible {
-		outline: 2px dashed var(--worn-receipt-focus, var(--cockpit-focus, var(--cockpit-text, currentColor)));
+		outline: 2px dashed var(--worn-receipt-focus, var(--worn-focus, var(--worn-text, currentColor)));
 		outline-offset: 2px;
 	}
 </style>

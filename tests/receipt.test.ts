@@ -71,8 +71,8 @@ describe("WornReceipt", () => {
 	it("owns its programmatic focus target and theme-extensible outline", () => {
 		const focusRule = source.match(/\.worn-receipt:focus-visible \{[\s\S]*?\}/u)?.[0] ?? "";
 		expect(source).toMatch(/<div\s+class="worn-receipt"[\s\S]*?tabindex="-1"/u);
-		expect(focusRule).toContain("outline: 2px dashed var(--worn-receipt-focus, var(--cockpit-focus, var(--cockpit-text, currentColor)));");
-		expect(focusRule).not.toContain("--cockpit-accent");
+		expect(focusRule).toContain("outline: 2px dashed var(--worn-receipt-focus, var(--worn-focus, var(--worn-text, currentColor)));");
+		expect(focusRule).not.toContain("--worn-accent");
 		expect(readme).toContain("`--worn-receipt-focus`");
 	});
 });

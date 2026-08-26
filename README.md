@@ -64,7 +64,7 @@ reduced motion.
 
 The receipt root has `tabindex="-1"`, so composed flows can move focus to a new
 result without adding it to the sequential tab order. Its focus outline uses
-`--worn-receipt-focus`, then `--cockpit-focus`, `--cockpit-text`, and
+`--worn-receipt-focus`, then `--worn-focus`, `--worn-text`, and
 `currentColor` as progressively broader fallbacks.
 
 ## Pairing with undo
