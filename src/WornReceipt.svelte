@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { prefersReducedMotion } from 'svelte/motion';
 	import { Button } from '@wornpage/button';
+	import { dismissWithFocusRecovery } from './focus-recovery';
 
 	interface Props {
 		summary: string;
@@ -14,9 +15,15 @@
 	}
 
 	let { summary, cells, undoAvailable = false, announce = true, id, onundo, ondone }: Props = $props();
+	let receiptRoot = $state<HTMLElement>();
+
+	function dismiss(event: MouseEvent) {
+		dismissWithFocusRecovery(event, receiptRoot!, ondone);
+	}
 </script>
 
 <div
+	bind:this={receiptRoot}
 	class="worn-receipt"
 	{id}
 	tabindex="-1"
@@ -41,7 +48,7 @@
 			{#if undoAvailable && onundo}
 				<Button size="sm" onclick={onundo} title="Undo this action and restore the previous state.">Undo</Button>
 			{/if}
-			{#if ondone}<Button size="sm" onclick={ondone}>Dismiss</Button>{/if}
+			{#if ondone}<Button size="sm" onclick={dismiss}>Dismiss</Button>{/if}
 		</div>
 	{/if}
 </div>

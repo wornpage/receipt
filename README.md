@@ -62,6 +62,10 @@ Actions render only when their handlers exist, use the shared Wornpage Button,
 and wrap on narrow screens. Entry motion is disabled when the user prefers
 reduced motion.
 
+Keyboard dismissal moves focus to the next visible control outside the receipt,
+or the nearest previous control when none follows, before `ondone` removes the
+card. Pointer dismissal does not force a focus move.
+
 The receipt root has `tabindex="-1"`, so composed flows can move focus to a new
 result without adding it to the sequential tab order. Its focus outline uses
 `--worn-receipt-focus`, then `--worn-focus`, `--worn-text`, and

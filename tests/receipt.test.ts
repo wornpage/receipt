@@ -49,8 +49,16 @@ describe("WornReceipt", () => {
     expect(source).toContain("import { Button } from '@wornpage/button';");
     expect(source).toContain("{#if (undoAvailable && onundo) || ondone}");
     expect(source).toContain("{#if undoAvailable && onundo}");
-    expect(source).toContain("{#if ondone}<Button size=\"sm\" onclick={ondone}>Dismiss</Button>{/if}");
+    expect(source).toContain("{#if ondone}<Button size=\"sm\" onclick={dismiss}>Dismiss</Button>{/if}");
     expect(source).not.toContain("class=\"worn-btn\"");
+  });
+
+  it("recovers keyboard focus before a dismissing parent removes the receipt", () => {
+    expect(source).toContain("import { dismissWithFocusRecovery } from './focus-recovery';");
+    expect(source).toContain("let receiptRoot = $state<HTMLElement>();");
+    expect(source).toMatch(/function dismiss\(event: MouseEvent\)[\s\S]*?dismissWithFocusRecovery\(event, receiptRoot!, ondone\);/u);
+    expect(source).toContain("bind:this={receiptRoot}");
+    expect(readme).toContain("Pointer dismissal does not force a focus move.");
   });
 
   it("honors reduced motion and contains long result text", () => {
@@ -70,7 +78,7 @@ describe("WornReceipt", () => {
 
 	it("owns its programmatic focus target and theme-extensible outline", () => {
 		const focusRule = source.match(/\.worn-receipt:focus-visible \{[\s\S]*?\}/u)?.[0] ?? "";
-		expect(source).toMatch(/<div\s+class="worn-receipt"[\s\S]*?tabindex="-1"/u);
+		expect(source).toMatch(/<div\s+bind:this=\{receiptRoot\}\s+class="worn-receipt"[\s\S]*?tabindex="-1"/u);
 		expect(focusRule).toContain("outline: 2px dashed var(--worn-receipt-focus, var(--worn-focus, var(--worn-text, currentColor)));");
 		expect(focusRule).not.toContain("--worn-accent");
 		expect(readme).toContain("`--worn-receipt-focus`");
