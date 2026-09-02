@@ -16,11 +16,11 @@ Repository text is checked out as LF through `.gitattributes`, so generated outp
 The shared [component delivery contract](https://github.com/wornpage/cli/blob/master/docs/component-delivery.md) checks this declaration, package exports, packed files, and generated output on every push and pull request.
 <!-- /wornpage-delivery -->
 
-## Install
+## Source use
 
-```bash
-bun add @wornpage/receipt
-```
+This package is not published to npm. Check out this repository at a reviewed commit and consume it
+from a local workspace after installing dependencies from `bun.lock`. The `@wornpage/receipt`
+import below assumes that workspace mapping; it does not resolve from the public npm registry.
 
 ## Usage
 
