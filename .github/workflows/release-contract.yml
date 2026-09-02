@@ -6,4 +6,4 @@ on:
 
 jobs:
   release-contract:
-    uses: wornpage/cli/.github/workflows/component-release-contract.yml@master
+    uses: wornpage/cli/.github/workflows/component-release-contract.yml@05e83e31275593d1b56dd931cb0b182dd9e19da8
