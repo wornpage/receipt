@@ -23,7 +23,7 @@
     "svelte": "^5.56.8"
   },
   "dependencies": {
-    "@wornpage/button": "https://codeload.github.com/wornpage/button/tar.gz/867ea5449916d1dfd9e59d231282ff54cc060085"
+    "@wornpage/button": "https://codeload.github.com/wornpage/button/tar.gz/fe7ff6a5e08bee7ab8d3127379c869de4c851fbc"
   },
   "files": ["src", "README.md"],
   "keywords": ["svelte", "receipt", "undo", "wornpage"],
