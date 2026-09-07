@@ -10,3 +10,5 @@ This repository stays public to preserve exact commit archive URLs used by exist
 New issues, pull requests, and component changes belong in the canonical repository. The standalone release workflow has been retired.
 
 See the [migration record](https://github.com/wornpage/wornpage/blob/main/docs/component-migration.md) for source ownership and compatibility requirements.
+
+Standalone maintenance ended on 2026-09-07. Existing source licenses continue to apply.
