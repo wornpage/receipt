@@ -1,5 +1,8 @@
 # @wornpage/receipt
 
+> Part of **[Wornpage Components](https://github.com/wornpage/wornpage#component-library)**.
+> [Browse the catalog](https://wornpage.pages.dev) · [Setup guide](https://github.com/wornpage/wornpage/blob/main/docs/getting-started.md) · [Wornpage overview](https://github.com/wornpage/wornpage)
+
 Svelte 5 action receipt — an undo-capable result card with a fly-in
 transition and shared Wornpage actions.
 
